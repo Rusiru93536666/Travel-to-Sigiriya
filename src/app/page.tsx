@@ -14,6 +14,8 @@ export default function Home() {
   const aboutSectionRef = useRef<HTMLDivElement>(null);
   const planeRef = useRef<HTMLDivElement>(null);
   const importantSectionRef = useRef<HTMLElement>(null);
+  const paintingSectionRef = useRef<HTMLDivElement>(null);
+  const lionGateSectionRef = useRef<HTMLDivElement>(null);
 
   // Animate hero text
   useLayoutEffect(() => {
@@ -88,10 +90,56 @@ export default function Home() {
           start: 'top 40%',
           end: 'bottom 10%',
           scrub: 1,
-          markers: true,
+          // markers: true,
         },
       }
     );
+  }, []);
+
+  // Animate Painting of Sigiriya Section
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      if (!paintingSectionRef.current) return;
+      const image = paintingSectionRef.current.querySelector('img');
+
+      if (image) {
+        gsap.from(image, {
+          scrollTrigger: {
+            trigger: image,
+            start: 'top 85%',
+            toggleActions: 'play none none reverse',
+          },
+          x: -100,
+          opacity: 0,
+          duration: 1.2,
+          ease: 'power3.out',
+        });
+      }
+    });
+    return () => ctx.revert();
+  }, []);
+
+  // Animate Lion Gate Section
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      if (!lionGateSectionRef.current) return;
+      const image = lionGateSectionRef.current.querySelector('img');
+
+      if (image) {
+        gsap.from(image, {
+          scrollTrigger: {
+            trigger: image,
+            start: 'top 85%',
+            toggleActions: 'play none none reverse',
+          },
+          x: 100,
+          opacity: 0,
+          duration: 1.2,
+          ease: 'power3.out',
+        });
+      }
+    });
+    return () => ctx.revert();
   }, []);
 
   return (
@@ -99,7 +147,7 @@ export default function Home() {
       <Navbar />
 
       {/* Hero Section */}
-      <div className="w-full h-screen relative overflow-hidden">
+      <div id="about" className="w-full h-screen relative overflow-hidden">
         <Image
           src="/sigiriyabg.png"
           alt="Hero Background"
@@ -111,8 +159,7 @@ export default function Home() {
         <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center">
           <h1
             ref={headingRef}
-            className="text-[180px] font-bold drop-shadow-2xl"
-          >
+            className="lg:text-[180px] md:text-[100px] sm:text-[80px] font-bold drop-shadow-2xl">
             SIGIRIYA
           </h1>
         </div>
@@ -129,12 +176,12 @@ export default function Home() {
       </div>
 
       {/* Static Heading */}
-      <div className="text-black text-7xl flex items-center justify-center font-bold h-[20vh]">
+      <div id="history" className="text-black text-7xl flex items-center justify-center font-bold h-[20vh]">
         About Sigiriya
       </div>
 
       {/* Blurred Card Section */}
-      <div ref={aboutSectionRef} className="relative w-[100vw] h-[100vh]">
+      <div ref={aboutSectionRef} id="lionrock" className="relative w-[100vw] h-[100vh]">
         <Image
           src="/sunrise.jpg"
           alt="Sigiriya Rock"
@@ -155,8 +202,6 @@ export default function Home() {
           </p>
         </div>
       </div>
-
-      
 
       {/* Important of Sigiriya Section */}
       <section
@@ -208,15 +253,12 @@ export default function Home() {
         </div>
       </section>
 
-
-
       {/* painting of sigiriya */}
       <section
+        ref={paintingSectionRef}
         className="w-full py-20 px-6 md:px-20 bg-white text-black"
       >
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
-
-
           {/* Image on Right */}
           <div className="md:w-1/2">
             <Image
@@ -227,7 +269,6 @@ export default function Home() {
               className="rounded-xl shadow-lg object-cover w-full h-auto"
             />
           </div>
-
 
           {/* Text on Left */}
           <div className="md:w-1/2">
@@ -241,16 +282,13 @@ export default function Home() {
               strictly stylised and are the sole secular antique art pieces in existence in Sri Lanka today
             </p>
           </div>
-
-          
-
         </div>
       </section>
 
-
-
        {/* lion gate in sigiriya */}
        <section
+        ref={lionGateSectionRef}
+        id="liongate"
         className="w-full py-20 px-6 md:px-20 bg-white text-black">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
 
@@ -281,12 +319,11 @@ export default function Home() {
               className="rounded-xl shadow-lg object-cover w-full h-auto"
             />
           </div>
-
         </div>
       </section>
 
-      <Gallery />
-
+      <div id="painting"><Gallery /></div>
+      
     </div>
   );
 }
