@@ -26,10 +26,15 @@ export default function Navbar() {
 
       {/* Desktop Links */}
       <ul className="hidden md:flex gap-8 text-lg font-medium">
-        <li className="hover:text-yellow-400 cursor-pointer transition">Home</li>
-        <li className="hover:text-yellow-400 cursor-pointer transition">About</li>
-        <li className="hover:text-yellow-400 cursor-pointer transition">Gallery</li>
-        <li className="hover:text-yellow-400 cursor-pointer transition">Travel</li>
+        <li>
+          <a href="#about" className="hover:text-yellow-400 cursor-pointer transition">Home</a>
+        </li>
+        <li>
+          <a href="#history" className="hover:text-yellow-400 cursor-pointer transition">About</a>
+        </li>
+        <li>
+          <a href="#painting" className="hover:text-yellow-400 cursor-pointer transition">Gallery</a>
+        </li>
       </ul>
 
       {/* Mobile Hamburger */}
@@ -45,10 +50,9 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {menuOpen && (
         <div className="absolute top-16 left-0 w-full bg-black/90 text-white flex flex-col items-center gap-6 py-6 md:hidden z-50">
-          <span onClick={() => setMenuOpen(false)} className="hover:text-yellow-400">Home</span>
-          <span onClick={() => setMenuOpen(false)} className="hover:text-yellow-400">About</span>
-          <span onClick={() => setMenuOpen(false)} className="hover:text-yellow-400">Gallery</span>
-          <span onClick={() => setMenuOpen(false)} className="hover:text-yellow-400">Travel</span>
+          <a href="#about" onClick={() => setMenuOpen(false)} className="hover:text-yellow-400">Home</a>
+          <a href="#history" onClick={() => setMenuOpen(false)} className="hover:text-yellow-400">About</a>
+          <a href="#painting" onClick={() => setMenuOpen(false)} className="hover:text-yellow-400">Gallery</a>
         </div>
       )}
     </nav>

@@ -15,22 +15,22 @@ const images = [
     description: 'Breathtaking view from above'
   },
   {
-    src: '/painting.jpg',
+    src: '/watergarden.jpg',
     title: 'Ancient Paintings',
     description: 'Frescoes of Sigiriya'
   },
   {
-    src: '/liongate.jpg',
+    src: '/watergarden.jpg',
     title: 'Lion Gate',
     description: 'The majestic entrance'
   },
   {
-    src: '/sigiriyarock.png',
+    src: '/watergarden.jpg',
     title: 'Sigiriya Rock',
     description: 'The iconic rock fortress'
   },
   {
-    src: '/sunrise.jpg',
+    src: '/watergarden.jpg',
     title: 'Sunrise',
     description: 'Dawn over Sigiriya'
   }
@@ -135,9 +135,9 @@ export default function ModernGallery() {
                 imageRefs.current[index] = el;
               }}
               onClick={() => handleImageClick(index)}
-              className="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer transform transition-all duration-300 hover:shadow-2xl"
+              className="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer"
             >
-              <div className="aspect-[4/3] relative overflow-hidden">
+              <div className="aspect-[4/2] relative overflow-hidden">
                 <img
                   src={image.src}
                   alt={image.title}
